@@ -57,16 +57,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Brand colors
-        ivory: "hsl(var(--ivory))",
-        charcoal: {
-          DEFAULT: "hsl(var(--charcoal))",
-          light: "hsl(var(--charcoal-light))",
-        },
-        "green-deep": "hsl(var(--green-deep))",
-        "green-muted": "hsl(var(--green-muted))",
-        "gold-warm": "hsl(var(--gold-warm))",
-        terracotta: "hsl(var(--terracotta))",
+        // Premium purple brand colors
+        "purple-soft": "hsl(var(--purple-soft))",
+        "purple-deep": "hsl(var(--purple-deep))",
+        "purple-glow": "hsl(var(--purple-glow))",
+        "purple-muted": "hsl(var(--purple-muted))",
+        lavender: "hsl(var(--lavender))",
+        "dark-base": "hsl(var(--dark-base))",
+        "dark-elevated": "hsl(var(--dark-elevated))",
       },
       fontFamily: {
         serif: ["Playfair Display", "Georgia", "serif"],
