@@ -15,10 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Premium brand variants
-        editorial: "bg-foreground text-background hover:bg-foreground/90 tracking-wide uppercase text-xs font-sans font-medium rounded-none",
-        "editorial-outline": "border border-foreground text-foreground hover:bg-foreground hover:text-background tracking-wide uppercase text-xs font-sans font-medium rounded-none",
-        "editorial-ghost": "text-foreground hover:text-primary tracking-wide uppercase text-xs font-sans font-medium underline-offset-4 hover:underline",
+        // Premium dark purple variants
+        editorial: "bg-primary text-primary-foreground hover:bg-primary/80 tracking-wide uppercase text-xs font-sans font-medium rounded-none shadow-lg shadow-primary/20",
+        "editorial-outline": "border border-primary text-primary hover:bg-primary hover:text-primary-foreground tracking-wide uppercase text-xs font-sans font-medium rounded-none",
+        "editorial-ghost": "text-primary hover:text-purple-glow tracking-wide uppercase text-xs font-sans font-medium underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",
