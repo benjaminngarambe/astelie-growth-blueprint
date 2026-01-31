@@ -28,14 +28,11 @@ export default function Index() {
           <div className="flex flex-col items-center text-center">
             {/* Portrait */}
             <div className="mb-10 animate-fade-in">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl" />
-                <img
-                  src={asteliePortrait}
-                  alt="Astelie Ngarambe"
-                  className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-2xl shadow-2xl ring-2 ring-primary/20"
-                />
-              </div>
+              <img
+                src={asteliePortrait}
+                alt="Astelie Ngarambe"
+                className="max-h-[500px] md:max-h-[600px] w-auto object-contain shadow-lg"
+              />
             </div>
 
             {/* Content */}
