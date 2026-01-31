@@ -3,49 +3,58 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
+import kokoLogo from "@/assets/logos/koko-logo.png";
+import jibuLogo from "@/assets/logos/jibu-logo.png";
+import zolaLogo from "@/assets/logos/zola-logo.png";
+import expLogo from "@/assets/logos/exp-logo.avif";
+
 const experiences = [
   {
     role: "Head of Commercial",
     company: "KOKO Networks",
-    period: "Recent",
-    description: "Led commercial strategy and market expansion for Africa's leading clean cooking fuel company, building scalable distribution systems and driving growth across East African markets.",
+    period: "Current",
+    logo: kokoLogo,
+    description: "Leading commercial strategy, demand generation, and growth execution for a clean cooking technology company. Driving scalable distribution systems and market expansion across East African markets.",
     highlights: [
-      "Strategic commercial leadership across multiple markets",
-      "Design of scalable distribution and retail networks",
-      "Brand positioning for market leadership in clean energy",
+      "Commercial strategy and demand generation leadership",
+      "Growth execution across multiple East African markets",
+      "Building scalable distribution and retail networks",
     ],
   },
   {
-    role: "Head of Marketing & Franchise Development",
+    role: "Head of Marketing & Franchisee Development",
     company: "JIBU",
     period: "Rwanda & DRC",
-    description: "Built and scaled the marketing function while developing franchise systems across Rwanda and the Democratic Republic of Congo, creating sustainable water access through entrepreneurship.",
+    logo: jibuLogo,
+    description: "Led one of the fastest-growing OPCOs in the JIBU network, overseeing marketing, customer experience, business development, micro-loan programs, and franchisee sales growth across Rwanda and the Democratic Republic of Congo.",
     highlights: [
-      "Franchise development and market expansion strategy",
-      "Brand building for social enterprise impact",
-      "Multi-country marketing leadership",
+      "Marketing and customer experience leadership",
+      "Micro-loan programs and business development",
+      "Franchisee sales growth across two countries",
     ],
   },
   {
-    role: "Head of Marketing, East & West Africa",
+    role: "Head of Marketing, West Africa",
     company: "ZOLA Electric",
     period: "Regional",
-    description: "Led regional marketing strategy for off-grid solar energy company, building brand presence and demand generation systems across East and West African markets.",
+    logo: zolaLogo,
+    description: "Led regional marketing strategy for a Silicon Valley clean energy unicorn, building brand presence and demand generation systems across West African markets.",
     highlights: [
-      "Regional marketing strategy and execution",
-      "Brand development for clean energy sector",
-      "Demand generation in emerging markets",
+      "Regional marketing strategy for clean energy unicorn",
+      "Brand development and market positioning",
+      "Demand generation in emerging West African markets",
     ],
   },
   {
     role: "Country Client Service Manager",
     company: "EXP Africa",
     period: "Earlier Career",
-    description: "Managed client relationships and service delivery for experiential marketing campaigns, building foundational expertise in brand activation and consumer engagement.",
+    logo: expLogo,
+    description: "Managed complex, multi-market brand executions at Africa's largest experiential marketing and demand activation agency, building foundational expertise in brand activation and consumer engagement.",
     highlights: [
-      "Client relationship management",
-      "Experiential marketing execution",
-      "Foundation in brand activation",
+      "Multi-market brand execution management",
+      "Experiential marketing and demand activation",
+      "Foundation in strategic brand activation",
     ],
   },
 ];
@@ -79,12 +88,20 @@ export default function Experience() {
                 key={exp.company}
                 className="group relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 py-12 border-b border-border last:border-b-0"
               >
-                {/* Timeline indicator */}
+                {/* Timeline indicator & Logo */}
                 <div className="lg:col-span-3">
-                  <div className="flex items-center gap-4 lg:block">
-                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                    <div className="lg:mt-3">
+                  <div className="flex items-start gap-4 lg:block">
+                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2 lg:mt-0" />
+                    <div className="lg:mt-4 space-y-4">
                       <p className="text-sm text-muted-foreground">{exp.period}</p>
+                      {/* Logo Container */}
+                      <div className="bg-white/90 rounded-lg p-4 w-fit">
+                        <img 
+                          src={exp.logo} 
+                          alt={`${exp.company} logo`}
+                          className="h-10 md:h-12 w-auto object-contain"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

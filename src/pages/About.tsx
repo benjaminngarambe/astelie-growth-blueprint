@@ -27,16 +27,16 @@ export default function About() {
             {/* Main Bio */}
             <div className="lg:col-span-7 space-y-6">
               <p className="body-large text-foreground">
-                Astelie Ngarambe is a Brand Architect and Growth Advisor with over ten years of experience at the intersection of strategy, branding, and market expansion across African and emerging markets.
+                Astelie Ngarambe is a Commercial & Brand Architect and Growth Advisor with over a decade of experience designing demand, go-to-market, and scale systems across Eastern and Western Africa.
               </p>
               <p className="body-regular">
-                Her work has spanned leadership roles in commercial strategy, marketing, and brand development for some of Africa's most innovative companies. From clean energy to sustainable water solutions, she has helped organizations build not just brands, but strategic growth engines that create lasting market impact.
+                She currently serves as Head of Commercial for KOKO, a clean cooking technology company, where she leads commercial strategy, demand generation, and growth execution. Previously, Astelie was Head of Marketing and Franchisee Development for JIBU Rwanda and DRC, one of the fastest-growing OPCOs in the JIBU network, overseeing marketing, customer experience, business development, micro-loan programs, and franchisee sales growth.
               </p>
               <p className="body-regular">
-                Astelie's approach is rooted in the belief that great brands are built on strategic clarity, not just creative execution. She works with founders, executives, and institutions who understand that sustainable growth requires deep market understanding, cultural intelligence, and systems that scale.
+                Her career also includes senior leadership roles at ZOLA Electric (Silicon Valley clean energy unicorn) as Head of Marketing for West Africa, and at EXP, Africa's largest experiential marketing and demand activation agency, managing complex, multi-market brand executions.
               </p>
               <p className="body-regular">
-                Based between Rwanda and Kenya, she brings a pan-African perspective to every engagement, helping brands navigate the complexity and opportunity of emerging markets with confidence and strategic precision.
+                Today, Astelie advises founders and leadership teams on commercial clarity, scalable systems, and customer-centric growth, helping African businesses build brands that convert, scale, and endure.
               </p>
             </div>
 
