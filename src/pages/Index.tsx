@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import asteliePortrait from "@/assets/astelie-portrait.jpg";
 
 const pillars = [
   {
@@ -24,23 +25,38 @@ export default function Index() {
       {/* Hero Section */}
       <section className="section-padding min-h-[80vh] flex items-center">
         <div className="container-editorial">
-          <div className="max-w-4xl">
-            <h1 className="heading-display text-foreground animate-fade-in-up">
-              I help brands grow with clarity, strategy, and cultural intelligence.
-            </h1>
-            <p className="body-large mt-6 max-w-2xl animate-fade-in-delay-1">
-              Brand Architect & Growth Advisor helping African and global brands scale with purpose.
-            </p>
-            <div className="flex flex-wrap gap-4 mt-10 animate-fade-in-delay-2">
-              <Button variant="editorial" size="editorial" asChild>
-                <Link to="/contact">
-                  Work With Me
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="editorial-outline" size="editorial" asChild>
-                <Link to="/experience">View My Work</Link>
-              </Button>
+          <div className="flex flex-col items-center text-center">
+            {/* Portrait */}
+            <div className="mb-10 animate-fade-in">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl" />
+                <img
+                  src={asteliePortrait}
+                  alt="Astelie Ngarambe"
+                  className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-2xl shadow-2xl ring-2 ring-primary/20"
+                />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="max-w-4xl">
+              <h1 className="heading-display text-foreground animate-fade-in-up">
+                I help brands grow with clarity, strategy, and cultural intelligence.
+              </h1>
+              <p className="body-large mt-6 max-w-2xl mx-auto animate-fade-in-delay-1">
+                Brand Architect & Growth Advisor helping African and global brands scale with purpose.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 mt-10 animate-fade-in-delay-2">
+                <Button variant="editorial" size="editorial" asChild>
+                  <Link to="/contact">
+                    Work With Me
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button variant="editorial-outline" size="editorial" asChild>
+                  <Link to="/experience">View My Work</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

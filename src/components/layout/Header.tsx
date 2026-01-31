@@ -19,46 +19,31 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="container-editorial flex items-center justify-between h-16 md:h-20">
-        {/* Logo */}
+        {/* Empty spacer for balance */}
+        <div className="w-10" />
+
+        {/* Centered Logo */}
         <Link 
           to="/" 
-          className="font-serif text-xl md:text-2xl font-medium tracking-tight text-foreground hover:text-primary transition-colors"
+          className="font-serif text-xl md:text-2xl font-medium tracking-tight text-foreground hover:text-primary transition-colors absolute left-1/2 -translate-x-1/2"
         >
           Astelie Ngarambe
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className={cn(
-                "text-sm font-medium tracking-wide uppercase transition-colors link-underline",
-                location.pathname === item.href
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-
-        {/* Mobile Menu Button */}
+        {/* Hamburger Menu Button - Always visible */}
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </nav>
 
-      {/* Mobile Navigation */}
+      {/* Navigation Menu - Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border animate-fade-in">
+        <div className="bg-background border-b border-border animate-fade-in">
           <div className="container-editorial py-6 flex flex-col gap-4">
             {navigation.map((item) => (
               <Link
