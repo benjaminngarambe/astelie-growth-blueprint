@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astelie Ngarambe — Brand Architect & Growth Advisor</title>
+  <meta name="description" content="Brand Architect & Growth Advisor helping African and global brands scale with purpose. Brand strategy, growth advisory, and marketing leadership." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg: hsl(270, 25%, 8%);
+      --fg: hsl(270, 20%, 95%);
+      --card: hsl(270, 20%, 12%);
+      --primary: hsl(270, 60%, 65%);
+      --primary-fg: hsl(270, 25%, 8%);
+      --muted: hsl(270, 15%, 55%);
+      --border: hsl(270, 15%, 20%);
+      --input-bg: hsl(270, 15%, 18%);
+      --destructive: hsl(0, 70%, 50%);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --container-max: 1200px;
+      --section-padding: clamp(4rem, 10vw, 8rem);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-serif);
+      color: var(--fg);
+      letter-spacing: -0.02em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    @media (min-width: 768px) { .container { padding: 0 2rem; } }
+    @media (min-width: 1024px) { .container { padding: 0 3rem; } }
+
+    .section-padding {
+      padding-top: var(--section-padding);
+      padding-bottom: var(--section-padding);
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    .heading-display { font-family: var(--font-serif); font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 500; line-height: 1.1; }
+    .heading-section { font-family: var(--font-serif); font-size: clamp(1.875rem, 4vw, 2.5rem); font-weight: 500; line-height: 1.15; }
+    .heading-card { font-family: var(--font-serif); font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 500; }
+    .body-large { font-size: clamp(1.125rem, 2vw, 1.25rem); line-height: 1.7; color: var(--muted); }
+    .body-regular { font-size: 1rem; line-height: 1.7; color: var(--muted); }
+    .label-text { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+
+    /* ===== COMPONENTS ===== */
+    .divider { width: 3rem; height: 1px; background: var(--border); }
+    .card {
+      background: var(--card);
+      padding: 2rem 2.5rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .card:hover { border-color: hsla(270, 60%, 65%, 0.3); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      font-size: 0.8125rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+      border: 1px solid var(--fg); color: var(--fg); background: transparent;
+      cursor: pointer; transition: all 0.3s; font-family: var(--font-sans);
+    }
+    .btn:hover { background: var(--fg); color: var(--bg); }
+    .btn-primary { background: var(--fg); color: var(--bg); }
+    .btn-primary:hover { background: transparent; color: var(--fg); }
+    .btn-ghost { border-color: transparent; }
+    .btn-ghost:hover { border-color: var(--border); background: transparent; color: var(--fg); }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: hsla(270, 25%, 8%, 0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 4rem; position: relative;
+    }
+    @media (min-width: 768px) { .header-inner { height: 5rem; } }
+    .header-logo {
+      font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500;
+      position: absolute; left: 50%; transform: translateX(-50%);
+      transition: color 0.3s;
+    }
+    @media (min-width: 768px) { .header-logo { font-size: 1.5rem; } }
+    .header-logo:hover { color: var(--primary); }
+
+    .hamburger {
+      background: none; border: none; cursor: pointer; padding: 0.5rem;
+      color: var(--fg); display: flex; align-items: center; justify-content: center;
+      margin-left: auto;
+    }
+    .hamburger svg { width: 1.25rem; height: 1.25rem; }
+
+    .nav-dropdown {
+      display: none; background: var(--bg); border-bottom: 1px solid var(--border);
+    }
+    .nav-dropdown.open { display: block; }
+    .nav-dropdown .container { padding-top: 1.5rem; padding-bottom: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .nav-dropdown a {
+      font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.5rem 0; color: var(--muted); transition: color 0.3s;
+    }
+    .nav-dropdown a:hover, .nav-dropdown a.active { color: var(--fg); }
+
+    /* ===== HERO ===== */
+    .hero { min-height: 80vh; display: flex; align-items: center; }
+    .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .hero-portrait { margin-bottom: 2.5rem; }
+    .hero-portrait img { max-height: 500px; width: auto; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+    @media (min-width: 768px) { .hero-portrait img { max-height: 600px; } }
+    .hero-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2.5rem; }
+
+    /* ===== PILLARS GRID ===== */
+    .pillars-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 768px) { .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+    .pillar-number { font-size: 0.875rem; font-weight: 500; color: var(--primary); margin-bottom: 1rem; display: block; }
+
+    /* ===== TWO COLUMN ===== */
+    .two-col { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 1024px) { .two-col { grid-template-columns: 7fr 5fr; gap: 4rem; } }
+    .sidebar { padding-left: 0; }
+    @media (min-width: 1024px) { .sidebar { padding-left: 2rem; border-left: 1px solid var(--border); } }
+    .sidebar-block { margin-bottom: 2rem; }
+    .sidebar-block h4 { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; color: var(--fg); }
+    .sidebar-block ul { display: flex; flex-direction: column; gap: 0.5rem; }
+    .sidebar-block li { color: var(--muted); }
+
+    /* ===== SERVICES ===== */
+    .service-card .service-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 1024px) { .service-card .service-grid { grid-template-columns: 4fr 8fr; } }
+    .service-detail h4 { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; color: var(--fg); }
+    .service-detail + .service-detail { margin-top: 1.5rem; }
+
+    /* ===== EXPERIENCE TIMELINE ===== */
+    .timeline-item {
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+      padding: 3rem 0; border-bottom: 1px solid var(--border);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    @media (min-width: 1024px) { .timeline-item { grid-template-columns: 3fr 9fr; gap: 3rem; } }
+    .timeline-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 0.5rem; }
+    .timeline-meta { display: flex; align-items: flex-start; gap: 1rem; }
+    @media (min-width: 1024px) { .timeline-meta { display: block; } }
+    .timeline-period { font-size: 0.875rem; color: var(--muted); }
+    .logo-box { background: hsla(0, 0%, 100%, 0.9); border-radius: 0.5rem; padding: 1rem; width: fit-content; margin-top: 1rem; }
+    .logo-box img { height: 2.5rem; width: auto; object-fit: contain; }
+    @media (min-width: 768px) { .logo-box img { height: 3rem; } }
+    .highlight-list { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .highlight-item { display: flex; align-items: flex-start; gap: 0.75rem; color: var(--muted); }
+    .highlight-dot { width: 0.375rem; height: 0.375rem; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 0.5rem; }
+
+    /* ===== MEDIA ===== */
+    .media-card .media-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 1024px) { .media-card .media-grid { grid-template-columns: 1fr 1fr; } }
+    .video-wrap { aspect-ratio: 16/9; background: var(--input-bg); overflow: hidden; }
+    .video-wrap iframe { width: 100%; height: 100%; border: none; }
+    .media-type { font-size: 0.875rem; font-weight: 500; color: var(--primary); margin-bottom: 0.5rem; }
+    .watch-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 1.5rem; transition: color 0.3s; }
+    .watch-link:hover { color: var(--primary); }
+
+    /* ===== CONTACT FORM ===== */
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 0.75rem 1rem; font-size: 1rem; font-family: var(--font-sans);
+      background: var(--input-bg); color: var(--fg); border: 1px solid var(--border);
+      border-radius: 0.25rem; outline: none; transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
+    .form-group textarea { resize: none; min-height: 9rem; }
+    .form-error { font-size: 0.875rem; color: var(--destructive); margin-top: 0.25rem; }
+    .form-success { display: none; padding: 1rem; background: hsla(270, 60%, 65%, 0.15); border: 1px solid var(--primary); font-size: 0.875rem; margin-top: 1rem; }
+
+    /* ===== TAGS ===== */
+    .tag { display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--border); font-size: 0.875rem; color: var(--muted); }
+
+    /* ===== FOOTER ===== */
+    .footer { border-top: 1px solid var(--border); }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
+    .footer-brand p { max-width: 20rem; }
+    .footer-nav { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-nav a { color: var(--muted); transition: color 0.3s; }
+    .footer-nav a:hover { color: var(--fg); }
+    .footer-bottom { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); font-size: 0.875rem; color: var(--muted); }
+
+    /* ===== BG CARD ===== */
+    .bg-card { background: var(--card); }
+
+    /* ===== UTILITIES ===== */
+    .text-center { text-align: center; }
+    .max-w-2xl { max-width: 42rem; }
+    .max-w-3xl { max-width: 48rem; }
+    .max-w-4xl { max-width: 56rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-8 { margin-top: 2rem; }
+    .mt-10 { margin-top: 2.5rem; }
+    .mt-12 { margin-top: 3rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-10 { margin-bottom: 2.5rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .space-y-6 > * + * { margin-top: 1.5rem; }
+    .space-y-8 > * + * { margin-top: 2rem; }
+    .space-y-12 > * + * { margin-top: 3rem; }
+    .pt-main { padding-top: 4rem; }
+    @media (min-width: 768px) { .pt-main { padding-top: 5rem; } }
+
+    /* ===== SECTION HIDDEN ===== */
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="container header-inner">
+      <div style="width:2.5rem"></div>
+      <a href="#home" class="header-logo" onclick="navigate('home')">Astelie Ngarambe</a>
+      <button class="hamburger" id="menuBtn" aria-label="Toggle menu">
+        <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="closeIcon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </nav>
+    <div class="nav-dropdown" id="navDropdown">
+      <div class="container">
+        <a href="#about" onclick="navigate('about')">About</a>
+        <a href="#services" onclick="navigate('services')">Services</a>
+        <a href="#experience" onclick="navigate('experience')">Experience</a>
+        <a href="#media" onclick="navigate('media')">Media</a>
+        <a href="#contact" onclick="navigate('contact')">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-main">
+
+    <!-- ===== HOME ===== -->
+    <div id="page-home" class="page-section active">
+      <!-- Hero -->
+      <section class="section-padding hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-portrait animate-fade-in">
+              <img src="src/assets/astelie-portrait.jpg" alt="Astelie Ngarambe" />
+            </div>
+            <div class="max-w-4xl">
+              <h1 class="heading-display animate-fade-in-up">I help brands grow with clarity, strategy, and cultural intelligence.</h1>
+              <p class="body-large mt-6 mx-auto max-w-2xl">Brand Architect &amp; Growth Advisor helping African and global brands scale with purpose.</p>
+              <div class="hero-ctas">
+                <a href="#contact" class="btn btn-primary" onclick="navigate('contact')">Work With Me →</a>
+                <a href="#experience" class="btn" onclick="navigate('experience')">View My Work</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container"><div class="divider"></div></div>
+
+      <!-- What I Do -->
+      <section class="section-padding">
+        <div class="container">
+          <div class="mb-12">
+            <p class="label-text mb-4">What I Do</p>
+            <h2 class="heading-section max-w-2xl">Strategic services for brands ready to scale with intention</h2>
+          </div>
+          <div class="pillars-grid">
+            <div class="card">
+              <span class="pillar-number">01</span>
+              <h3 class="heading-card mb-4">Brand Strategy &amp; Positioning</h3>
+              <p class="body-regular">Helping brands define who they are, why they matter, and how they win in competitive markets.</p>
+            </div>
+            <div class="card">
+              <span class="pillar-number">02</span>
+              <h3 class="heading-card mb-4">Growth &amp; Go-To-Market Strategy</h3>
+              <p class="body-regular">Designing demand systems, expansion strategies, and commercial models that scale.</p>
+            </div>
+            <div class="card">
+              <span class="pillar-number">03</span>
+              <h3 class="heading-card mb-4">Marketing Leadership &amp; Advisory</h3>
+              <p class="body-regular">Supporting leadership teams with structure, clarity, and execution frameworks.</p>
+            </div>
+          </div>
+          <div class="mt-12 text-center">
+            <a href="#services" class="btn btn-ghost" onclick="navigate('services')">Explore All Services →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Credibility -->
+      <section class="section-padding bg-card">
+        <div class="container">
+          <div class="max-w-3xl mx-auto text-center">
+            <div class="divider mx-auto mb-8"></div>
+            <p class="body-large">Astelie Ngarambe is a Brand Architect and Growth Advisor with over a decade of experience building strategic and scalable brand and commercial systems across African markets. She works at the intersection of strategy, culture, and growth.</p>
+            <div class="mt-10">
+              <a href="#about" class="btn" onclick="navigate('about')">Learn More About Astelie</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section-padding">
+        <div class="container">
+          <div class="max-w-2xl">
+            <p class="label-text mb-4">Let's Connect</p>
+            <h2 class="heading-section mb-6">Ready to build a brand that scales?</h2>
+            <p class="body-large mb-8">Whether you're launching, scaling, or repositioning, I'd love to hear about your brand and explore how we can work together.</p>
+            <a href="#contact" class="btn btn-primary" onclick="navigate('contact')">Start a Conversation →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <div id="page-about" class="page-section">
+      <section class="section-padding">
+        <div class="container">
+          <div class="max-w-4xl">
+            <p class="label-text mb-4 animate-fade-in">About</p>
+            <h1 class="heading-display animate-fade-in-up">Building brands that matter, strategies that scale</h1>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-bottom: var(--section-padding);">
+        <div class="container">
+          <div class="two-col">
+            <div class="space-y-6">
+              <p class="body-large" style="color:var(--fg)">Astelie Ngarambe is a Commercial &amp; Brand Architect and Growth Advisor with over a decade of experience designing demand, go-to-market, and scale systems across Eastern and Western Africa.</p>
+              <p class="body-regular">She currently serves as Head of Commercial for KOKO, a clean cooking technology company, where she leads commercial strategy, demand generation, and growth execution. Previously, Astelie was Head of Marketing and Franchisee Development for JIBU Rwanda and DRC, one of the fastest-growing OPCOs in the JIBU network, overseeing marketing, customer experience, business development, micro-loan programs, and franchisee sales growth.</p>
+              <p class="body-regular">Her career also includes senior leadership roles at ZOLA Electric (Silicon Valley clean energy unicorn) as Head of Marketing for West Africa, and at EXP, Africa's largest experiential marketing and demand activation agency, managing complex, multi-market brand executions.</p>
+              <p class="body-regular">Today, Astelie advises founders and leadership teams on commercial clarity, scalable systems, and customer-centric growth, helping African businesses build brands that convert, scale, and endure.</p>
+            </div>
+            <aside class="sidebar">
+              <div class="sidebar-block"><h4>Focus Areas</h4><ul><li>Brand Strategy &amp; Positioning</li><li>Growth &amp; Market Expansion</li><li>Commercial Systems Design</li><li>Marketing Leadership</li></ul></div>
+              <div class="sidebar-block"><h4>Markets</h4><ul><li>East Africa</li><li>West Africa</li><li>Pan-African</li><li>Emerging Markets</li></ul></div>
+              <div class="sidebar-block"><h4>Industries</h4><ul><li>Clean Energy</li><li>FMCG</li><li>Technology</li><li>Social Enterprise</li></ul></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Philosophy -->
+      <section class="section-padding bg-card">
+        <div class="container">
+          <div class="max-w-3xl">
+            <p class="label-text mb-4">Philosophy</p>
+            <h2 class="heading-section mb-8">My Approach to Branding &amp; Growth</h2>
+            <div class="space-y-6">
+              <div class="card" style="background:var(--bg)"><h3 class="heading-card mb-3">Branding is a strategic business function</h3><p class="body-regular">Too often, branding is treated as an aesthetic exercise. I believe brand strategy should be the foundation of business strategy—shaping how you compete, differentiate, and create value in the market.</p></div>
+              <div class="card" style="background:var(--bg)"><h3 class="heading-card mb-3">Growth must be culturally intelligent</h3><p class="body-regular">Expanding across African markets requires more than localization—it requires deep cultural fluency and commercially sound strategies that respect local context while building sustainable business models.</p></div>
+              <div class="card" style="background:var(--bg)"><h3 class="heading-card mb-3">Strategy comes before execution</h3><p class="body-regular">Great execution without strategy is motion without direction. I help organizations build the strategic clarity that makes every marketing investment, brand decision, and growth initiative more effective.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding">
+        <div class="container">
+          <div class="max-w-2xl">
+            <h2 class="heading-section mb-6">Let's discuss your brand</h2>
+            <p class="body-large mb-8">I work with a select number of clients each year to ensure deep engagement and meaningful impact.</p>
+            <a href="#contact" class="btn btn-primary" onclick="navigate('contact')">Get in Touch →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== SERVICES ===== -->
+    <div id="page-services" class="page-section">
+      <section class="section-padding">
+        <div class="container">
+          <div class="max-w-4xl">
+            <p class="label-text mb-4 animate-fade-in">Services</p>
+            <h1 class="heading-display animate-fade-in-up">Strategic services for brands ready to grow with intention</h1>
+            <p class="body-large mt-6 max-w-2xl">I work with founders, executives, and institutions who understand that sustainable growth requires strategic clarity—not just tactical execution.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-bottom: var(--section-padding);">
+        <div class="container">
+          <div class="space-y-8">
+            <!-- Service 01 -->
+            <article class="card service-card"><div class="service-grid"><div><span class="pillar-number">01</span><h2 class="heading-card">Brand Strategy &amp; Positioning</h2></div><div><div class="service-detail"><h4>Who This Is For</h4><p class="body-regular">Founders, executives, and marketing leaders seeking strategic clarity for their brand.</p></div><div class="service-detail"><h4>The Problem</h4><p class="body-regular">Your brand lacks differentiation, your positioning feels unclear, or you're struggling to articulate why customers should choose you.</p></div><div class="service-detail"><h4>The Outcome</h4><p class="body-regular">A clear, compelling brand strategy that defines your market position, value proposition, and competitive advantage—enabling confident decision-making across your organization.</p></div></div></div></article>
+            <!-- Service 02 -->
+            <article class="card service-card"><div class="service-grid"><div><span class="pillar-number">02</span><h2 class="heading-card">Growth Advisory &amp; Market Expansion</h2></div><div><div class="service-detail"><h4>Who This Is For</h4><p class="body-regular">Companies expanding into new African markets or scaling within existing ones.</p></div><div class="service-detail"><h4>The Problem</h4><p class="body-regular">Market entry feels risky, growth has stalled, or you need a strategic roadmap for expansion that accounts for local market dynamics.</p></div><div class="service-detail"><h4>The Outcome</h4><p class="body-regular">A comprehensive growth strategy with clear market entry frameworks, demand generation systems, and commercial models designed for sustainable scaling.</p></div></div></div></article>
+            <!-- Service 03 -->
+            <article class="card service-card"><div class="service-grid"><div><span class="pillar-number">03</span><h2 class="heading-card">Marketing Leadership (Fractional / Advisory)</h2></div><div><div class="service-detail"><h4>Who This Is For</h4><p class="body-regular">Organizations without senior marketing leadership or those needing strategic guidance.</p></div><div class="service-detail"><h4>The Problem</h4><p class="body-regular">Your marketing lacks strategic direction, your team needs guidance, or you need senior expertise without a full-time hire.</p></div><div class="service-detail"><h4>The Outcome</h4><p class="body-regular">Strategic marketing leadership that brings structure, clarity, and accountability to your marketing function—accelerating execution and improving results.</p></div></div></div></article>
+            <!-- Service 04 -->
+            <article class="card service-card"><div class="service-grid"><div><span class="pillar-number">04</span><h2 class="heading-card">Franchise &amp; Go-To-Market Strategy</h2></div><div><div class="service-detail"><h4>Who This Is For</h4><p class="body-regular">Franchise businesses, multi-location brands, and companies launching new products or services.</p></div><div class="service-detail"><h4>The Problem</h4><p class="body-regular">Inconsistent brand execution across locations, unclear franchise marketing systems, or launching a new offering without a clear go-to-market plan.</p></div><div class="service-detail"><h4>The Outcome</h4><p class="body-regular">Scalable franchise systems and go-to-market strategies that ensure brand consistency while empowering local market success.</p></div></div></div></article>
+            <!-- Service 05 -->
+            <article class="card service-card"><div class="service-grid"><div><span class="pillar-number">05</span><h2 class="heading-card">Workshops, Speaking &amp; Moderation</h2></div><div><div class="service-detail"><h4>Who This Is For</h4><p class="body-regular">Conferences, corporate events, leadership retreats, and internal strategy sessions.</p></div><div class="service-detail"><h4>The Problem</h4><p class="body-regular">You need an experienced voice to lead strategic conversations, deliver insights on branding and growth, or facilitate productive strategy sessions.</p></div><div class="service-detail"><h4>The Outcome</h4><p class="body-regular">Engaging, thoughtful sessions that leave your audience with actionable insights and fresh perspectives on brand building and market growth.</p></div></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding bg-card">
+        <div class="container">
+          <div class="max-w-2xl mx-auto text-center">
+            <h2 class="heading-section mb-6">Ready to start?</h2>
+            <p class="body-large mb-8">Every engagement begins with a conversation. Let's discuss your brand, your goals, and explore how we might work together.</p>
+            <a href="#contact" class="btn btn-primary" onclick="navigate('contact')">Start a Conversation →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <div id="page-experience" class="page-section">
+      <section class="section-padding">
+        <div class="container">
+          <div class="max-w-4xl">
+            <p class="label-text mb-4 animate-fade-in">Experience</p>
+            <h1 class="heading-display animate-fade-in-up">A decade of building brands and growth systems across Africa</h1>
+            <p class="body-large mt-6 max-w-2xl">Strategic leadership roles focused on brand building, commercial growth, and market expansion in some of Africa's most innovative companies.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-bottom: var(--section-padding);">
+        <div class="container">
+          <!-- KOKO -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-meta"><div class="timeline-dot"></div><div><p class="timeline-period">Current</p><div class="logo-box"><img src="src/assets/logos/koko-logo.png" alt="KOKO Networks logo" /></div></div></div>
+            </div>
+            <div>
+              <h2 class="heading-card">Head of Commercial</h2>
+              <p style="font-family:var(--font-serif);font-size:1.125rem;color:var(--muted);margin-top:0.25rem">KOKO Networks</p>
+              <p class="body-regular mt-4" style="max-width:42rem">Leading commercial strategy, demand generation, and growth execution for a clean cooking technology company. Driving scalable distribution systems and market expansion across East African markets.</p>
+              <div class="highlight-list"><div class="highlight-item"><span class="highlight-dot"></span>Commercial strategy and demand generation leadership</div><div class="highlight-item"><span class="highlight-dot"></span>Growth execution across multiple East African markets</div><div class="highlight-item"><span class="highlight-dot"></span>Building scalable distribution and retail networks</div></div>
+            </div>
+          </div>
+          <!-- JIBU -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-meta"><div class="timeline-dot"></div><div><p class="timeline-period">Rwanda &amp; DRC</p><div class="logo-box"><img src="src/assets/logos/jibu-logo.png" alt="JIBU logo" /></div></div></div>
+            </div>
+            <div>
+              <h2 class="heading-card">Head of Marketing &amp; Franchisee Development</h2>
+              <p style="font-family:var(--font-serif);font-size:1.125rem;color:var(--muted);margin-top:0.25rem">JIBU</p>
+              <p class="body-regular mt-4" style="max-width:42rem">Led one of the fastest-growing OPCOs in the JIBU network, overseeing marketing, customer experience, business development, micro-loan programs, and franchisee sales growth across Rwanda and the Democratic Republic of Congo.</p>
+              <div class="highlight-list"><div class="highlight-item"><span class="highlight-dot"></span>Marketing and customer experience leadership</div><div class="highlight-item"><span class="highlight-dot"></span>Micro-loan programs and business development</div><div class="highlight-item"><span class="highlight-dot"></span>Franchisee sales growth across two countries</div></div>
+            </div>
+          </div>
+          <!-- ZOLA -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-meta"><div class="timeline-dot"></div><div><p class="timeline-period">Regional</p><div class="logo-box"><img src="src/assets/logos/zola-logo.png" alt="ZOLA Electric logo" /></div></div></div>
+            </div>
+            <div>
+              <h2 class="heading-card">Head of Marketing, West Africa</h2>
+              <p style="font-family:var(--font-serif);font-size:1.125rem;color:var(--muted);margin-top:0.25rem">ZOLA Electric</p>
+              <p class="body-regular mt-4" style="max-width:42rem">Led regional marketing strategy for a Silicon Valley clean energy unicorn, building brand presence and demand generation systems across West African markets.</p>
+              <div class="highlight-list"><div class="highlight-item"><span class="highlight-dot"></span>Regional marketing strategy for clean energy unicorn</div><div class="highlight-item"><span class="highlight-dot"></span>Brand development and market positioning</div><div class="highlight-item"><span class="highlight-dot"></span>Demand generation in emerging West African markets</div></div>
+            </div>
+          </div>
+          <!-- EXP -->
+          <div class="timeline-item">
+            <div>
+              <div class="timeline-meta"><div class="timeline-dot"></div><div><p class="timeline-period">Earlier Career</p><div class="logo-box"><img src="src/assets/logos/exp-logo.avif" alt="EXP Africa logo" /></div></div></div>
+            </div>
+            <div>
+              <h2 class="heading-card">Country Client Service Manager</h2>
+              <p style="font-family:var(--font-serif);font-size:1.125rem;color:var(--muted);margin-top:0.25rem">EXP Africa</p>
+              <p class="body-regular mt-4" style="max-width:42rem">Managed complex, multi-market brand executions at Africa's largest experiential marketing and demand activation agency, building foundational expertise in brand activation and consumer engagement.</p>
+              <div class="highlight-list"><div class="highlight-item"><span class="highlight-dot"></span>Multi-market brand execution management</div><div class="highlight-item"><span class="highlight-dot"></span>Experiential marketing and demand activation</div><div class="highlight-item"><span class="highlight-dot"></span>Foundation in strategic brand activation</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding bg-card">
+        <div class="container">
+          <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center">
+            <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center" class="exp-cta-grid">
+              <div>
+                <h2 class="heading-section mb-6">Interested in working together?</h2>
+                <p class="body-large">I bring this experience to every client engagement—strategic depth, market knowledge, and a commitment to building brands that create real impact.</p>
+              </div>
+              <div>
+                <a href="#contact" class="btn btn-primary" onclick="navigate('contact')">Start a Conversation →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== MEDIA ===== -->
+    <div id="page-media" class="page-section">
+      <section class="section-padding">
+        <div class="container">
+          <div class="max-w-4xl">
+            <p class="label-text mb-4 animate-fade-in">Media &amp; Speaking</p>
+            <h1 class="heading-display animate-fade-in-up">Sharing insights on brand building and strategic growth</h1>
+            <p class="body-large mt-6 max-w-2xl">Featured conversations, panels, and interviews exploring branding, marketing strategy, and growth in African and emerging markets.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-bottom: var(--section-padding);">
+        <div class="container">
+          <div class="space-y-12">
+            <article class="card media-card">
+              <div class="media-grid">
+                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/JE3-r9VcHMY" title="9 Women in 90 Minutes" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div style="display:flex;flex-direction:column;justify-content:center">
+                  <span class="media-type">Panel Discussion</span>
+                  <h2 class="heading-card mb-4">9 Women in 90 Minutes</h2>
+                  <p class="body-regular">A conversation on leadership, branding, and navigating growth across African markets.</p>
+                  <a href="https://www.youtube.com/watch?v=JE3-r9VcHMY" target="_blank" rel="noopener noreferrer" class="watch-link">▶ Watch on YouTube</a>
+                </div>
+              </div>
+            </article>
+            <article class="card media-card">
+              <div class="media-grid">
+                <div class="video-wrap"><iframe src="https://www.youtube.com/embed/qDrTI7D78_8" title="Marketing Strategy & Brand Building" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div style="display:flex;flex-direction:column;justify-content:center">
+                  <span class="media-type">Podcast Interview</span>
+                  <h2 class="heading-card mb-4">Marketing Strategy &amp; Brand Building</h2>
+                  <p class="body-regular">Astelie shares insights on marketing strategy, growth, and building brands with purpose.</p>
+                  <a href="https://www.youtube.com/watch?v=qDrTI7D78_8" target="_blank" rel="noopener noreferrer" class="watch-link">▶ Watch on YouTube</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding bg-card">
+        <div class="container">
+          <div class="max-w-2xl mx-auto text-center">
+            <p class="label-text mb-4">Speaking &amp; Events</p>
+            <h2 class="heading-section mb-6">Available for speaking, panels, and podcasts</h2>
+            <p class="body-large mb-8">I speak on topics including brand strategy, growth in African markets, marketing leadership, and building businesses with purpose. Available for conferences, podcasts, corporate events, and moderation.</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;margin-bottom:2.5rem">
+              <span class="tag">Keynotes</span>
+              <span class="tag">Panel Discussions</span>
+              <span class="tag">Podcast Interviews</span>
+              <span class="tag">Moderation</span>
+              <span class="tag">Workshops</span>
+            </div>
+            <a href="#contact" class="btn btn-primary" onclick="navigate('contact')">Inquire About Speaking →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <div id="page-contact" class="page-section">
+      <section class="section-padding">
+        <div class="container">
+          <div class="max-w-4xl">
+            <p class="label-text mb-4 animate-fade-in">Contact</p>
+            <h1 class="heading-display animate-fade-in-up">Let's talk about your brand</h1>
+            <p class="body-large mt-6 max-w-2xl">Whether you're exploring a consulting engagement, seeking a speaker, or interested in collaboration, I'd love to hear from you.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-bottom: var(--section-padding);">
+        <div class="container">
+          <div class="two-col">
+            <div>
+              <form id="contactForm" novalidate>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" />
+                  <div class="form-error" id="nameError"></div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="your@email.com" />
+                  <div class="form-error" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" rows="6" placeholder="Tell me about your brand and how I can help..."></textarea>
+                  <div class="form-error" id="messageError"></div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+                <div class="form-success" id="formSuccess">Thank you for reaching out. I'll be in touch soon.</div>
+              </form>
+            </div>
+            <aside class="sidebar">
+              <div class="sidebar-block"><h4>Inquiries</h4><p class="body-regular">I'm available for consulting, advisory work, speaking engagements, and strategic partnerships.</p></div>
+              <div style="width:3rem;height:1px;background:var(--border);margin:1.5rem 0"></div>
+              <div class="sidebar-block"><h4>Response Time</h4><p class="body-regular">I typically respond within 48 hours. For urgent speaking or media inquiries, please indicate in your message.</p></div>
+              <div style="width:3rem;height:1px;background:var(--border);margin:1.5rem 0"></div>
+              <div class="sidebar-block"><h4>Connect</h4><a href="https://www.linkedin.com/in/astelie" target="_blank" rel="noopener noreferrer" style="font-size:0.875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;transition:color 0.3s">LinkedIn →</a></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding bg-card">
+        <div class="container">
+          <div class="max-w-2xl mx-auto text-center">
+            <div class="divider mx-auto mb-8"></div>
+            <p class="body-large" style="font-style:italic;font-family:var(--font-serif)">"Great brands aren't built on tactics alone. They're built on strategic clarity, cultural intelligence, and a commitment to creating real value."</p>
+            <p class="mt-4 label-text">— Astelie Ngarambe</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container" style="padding-top:3rem;padding-bottom:4rem">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" onclick="navigate('home')" style="font-family:var(--font-serif);font-size:1.25rem;font-weight:500;display:block;margin-bottom:1rem">Astelie Ngarambe</a>
+          <p class="body-regular">Brand Architect &amp; Growth Advisor helping African and global brands scale with purpose.</p>
+        </div>
+        <div>
+          <h4 style="font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem">Navigate</h4>
+          <nav class="footer-nav">
+            <a href="#about" onclick="navigate('about')">About</a>
+            <a href="#services" onclick="navigate('services')">Services</a>
+            <a href="#experience" onclick="navigate('experience')">Experience</a>
+            <a href="#media" onclick="navigate('media')">Media</a>
+            <a href="#contact" onclick="navigate('contact')">Contact</a>
+          </nav>
+        </div>
+        <div>
+          <h4 style="font-size:0.75rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem">Connect</h4>
+          <div class="footer-nav">
+            <a href="https://www.linkedin.com/in/astelie" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="#contact" onclick="navigate('contact')">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Astelie Ngarambe. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Experience CTA responsive fix -->
+  <style>
+    @media (min-width: 1024px) {
+      .exp-cta-grid { grid-template-columns: 1fr 1fr !important; }
+      .exp-cta-grid > div:last-child { text-align: right; }
+    }
+  </style>
+
+  <script>
+    // Navigation
+    function navigate(page) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Close menu
+      document.getElementById('navDropdown').classList.remove('open');
+      document.getElementById('menuIcon').style.display = '';
+      document.getElementById('closeIcon').style.display = 'none';
+
+      // Update active nav
+      document.querySelectorAll('.nav-dropdown a').forEach(a => a.classList.remove('active'));
+      const activeLink = document.querySelector('.nav-dropdown a[href="#' + page + '"]');
+      if (activeLink) activeLink.classList.add('active');
+
+      // Update hash
+      history.pushState(null, '', '#' + page);
+      return false;
+    }
+
+    // Hamburger menu
+    document.getElementById('menuBtn').addEventListener('click', function() {
+      const dd = document.getElementById('navDropdown');
+      const isOpen = dd.classList.toggle('open');
+      document.getElementById('menuIcon').style.display = isOpen ? 'none' : '';
+      document.getElementById('closeIcon').style.display = isOpen ? '' : 'none';
+    });
+
+    // Handle initial hash
+    window.addEventListener('DOMContentLoaded', function() {
+      const hash = location.hash.replace('#', '') || 'home';
+      const page = document.getElementById('page-' + hash);
+      if (page) navigate(hash);
+    });
+
+    // Contact form validation
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('messageError').textContent = '';
+
+      if (!name) { document.getElementById('nameError').textContent = 'Name is required'; valid = false; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('emailError').textContent = 'Please enter a valid email'; valid = false; }
+      if (!message) { document.getElementById('messageError').textContent = 'Message is required'; valid = false; }
+
+      if (valid) {
+        document.getElementById('submitBtn').textContent = 'Sending...';
+        document.getElementById('submitBtn').disabled = true;
+        setTimeout(function() {
+          document.getElementById('formSuccess').style.display = 'block';
+          document.getElementById('contactForm').reset();
+          document.getElementById('submitBtn').textContent = 'Send Message';
+          document.getElementById('submitBtn').disabled = false;
+        }, 1000);
+      }
+    });
+  </script>
+</body>
+</html>
