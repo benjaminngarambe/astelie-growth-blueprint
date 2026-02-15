@@ -1,70 +1,48 @@
 
 
-## Plan: Display Full Portrait Image Centered on Homepage
+## Plan: Generate Standalone HTML File
 
-Based on the reference image you provided, I'll update the hero section to display Astelie's full portrait prominently centered, without any overlay effects or cropping.
-
----
-
-### Changes to Make
-
-#### Update Homepage Hero (`src/pages/Index.tsx`)
-
-**Current state:**
-- Small circular portrait (48x48 mobile, 64x64 desktop)
-- Has gradient overlay (`bg-gradient-to-br from-primary/20`)
-- Rounded corners with ring styling
-- Uses `object-cover` which crops the image
-
-**New design (matching reference):**
-- Large, full-height portrait displayed prominently in center
-- No gradient overlay or tint effects
-- Clean presentation - the image speaks for itself
-- Display the full image without cropping (using `object-contain` or natural dimensions)
-- Remove the decorative ring border
-- Make the image significantly larger (approximately 400-500px height on desktop)
-
-**Updated image styling:**
-```
-- Remove: rounded-2xl, ring-2, ring-primary/20
-- Remove: gradient overlay div
-- Change: object-cover → object-contain (to show full image)
-- Update: size to max-h-[500px] md:max-h-[600px] with auto width
-- Keep: shadow for subtle depth
-- Keep: centered alignment
-```
+Create a single `standalone-site.html` file in the project root that replicates the entire website with all CSS and JavaScript inline. No external dependencies required -- it will work by simply opening the file in a browser.
 
 ---
 
-### Visual Comparison
+### What Will Be Included
 
-**Before:**
-```text
-        +--------+
-        | (small |
-        | circle)|
-        +--------+
-    "Headline text..."
-```
+All six pages of the website recreated as sections within a single-page HTML document with anchor-based navigation:
 
-**After (matching reference):**
-```text
-    +------------------+
-    |                  |
-    |   Full Portrait  |
-    |   (large, clean) |
-    |                  |
-    +------------------+
-    "Headline text..."
-```
+- **Home** -- Hero with portrait placeholder, headline, CTAs, "What I Do" pillars, credibility snapshot
+- **About** -- Biography, focus areas sidebar, philosophy cards
+- **Services** -- All 5 service offerings with descriptions
+- **Experience** -- Timeline with role descriptions (logos referenced as placeholders)
+- **Media** -- YouTube video embeds
+- **Contact** -- Form with validation (client-side JS)
 
 ---
 
-### Technical Details
+### Technical Approach
 
-| File | Changes |
-|------|---------|
-| `src/pages/Index.tsx` | Remove gradient overlay div, update image classes to display full image without effects, increase size significantly |
+| Aspect | Implementation |
+|--------|---------------|
+| **Navigation** | Hamburger menu toggled via vanilla JavaScript, centered "Astelie Ngarambe" branding |
+| **Styling** | All CSS inline in a `<style>` tag: dark purple theme (`hsl(270, 25%, 8%)`), Playfair Display + Inter fonts via Google Fonts CDN |
+| **Interactivity** | Vanilla JavaScript for hamburger menu toggle, contact form validation, smooth scrolling between sections |
+| **Images** | Portrait and logos referenced via relative paths (`src/assets/...`). A note will be included explaining these must be co-located or replaced with hosted URLs |
+| **Responsiveness** | Media queries for mobile/tablet/desktop layouts |
 
-The image will be displayed at its natural aspect ratio, centered, and will be the visual focal point of the page - similar to the Kasia Siwosz reference you shared.
+---
 
+### File Structure
+
+A single file: **`standalone-site.html`** (~600-800 lines) containing:
+
+1. `<style>` block with all CSS (theme variables, typography, layout, components, responsive)
+2. `<body>` with all page sections as `<section>` elements
+3. `<script>` block with vanilla JS for menu toggle, form handling, and section navigation
+
+---
+
+### Limitations
+
+- Images (portrait, logos) will use relative paths from the project -- to use the file independently, image paths would need to be updated to hosted URLs
+- Contact form submission is simulated (no backend)
+- YouTube embeds require an internet connection
